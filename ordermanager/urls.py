@@ -7,4 +7,7 @@ urlpatterns = [
     path('order/<int:pk>', views.OrderDetailView.as_view(), name='order_detail'),
     path('order/new/', views.CreateOrderView.as_view(), name='order_new'),
     path('order/<int:pk>/edit/', views.OrderUpdateView.as_view(), name='order_edit'),
+    path('contact/<int:pk>', views.ContactDetailView.as_view(), name='contact_detail'),
+    path('contact/new/', views.AddContactView.as_view(), name='contact_new'),
+    path('contact/<int:pk>/edit/', views.ContactUpdateView.as_view(), name='contact_edit'),
 ]
