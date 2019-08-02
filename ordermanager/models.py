@@ -59,7 +59,7 @@ class Order(models.Model):
     )
 
     author = models.ForeignKey('auth.User')
-    order_number = models.IntegerField(primary_key="True")
+    order_number = models.CharField()
     order_reason = models.CharField(max_length=3, choices=REASON)
     customer = models.CharField(max_length=3, choices=CUSTOMERS)
     product_name = models.CharField()

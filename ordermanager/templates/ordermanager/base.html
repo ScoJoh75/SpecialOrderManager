@@ -5,17 +5,45 @@
     <meta charset="UTF-8">
     <title>Special Order Manager</title>
 
-    <!-- Boorstrap -->
+    https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
 
-    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/ordermanager.css' %}">
 
-    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Russo+One&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default techfont custom-navbar">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li><a class='navbar-brand bigbrand' href="{% url 'order_list' %}">Main</a></li>
+                <li><a href="{% url 'bout' %}">About</a></li>
+                <li><a href="#">##</a> </li>
+            </ul>
 
-    <!-- NAVBAR -->
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'order_new' %}">New Order</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a>Welcome: {{ user.username }}</a></li>
+                    {% else %}
+                    <li><a class="nav navbar-right" href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
+                {% endif %}
+            </ul>
 
-    <!-- Content Block -->
+        </div>
+    </nav>
+    <!-- Content -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
