@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "ordermanager/base.html" %}
+{% block content %}
+<div class="centerstage">
+    {% for post in order_list %}
+        <div class="order">
+            <h1><a href="{% url 'order_detail' pk=order.pk %}">{{ order.order_number }}</a></h1>
+            <div class="date"> <p>Posted: {{ order.date|date:"D M Y" }}</p></div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -21,7 +21,6 @@
                 <li><a href="{% url 'bout' %}">About</a></li>
                 <li><a href="#">##</a> </li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'order_new' %}">New Order</a></li>
@@ -31,7 +30,6 @@
                     <li><a class="nav navbar-right" href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
                 {% endif %}
             </ul>
-
         </div>
     </nav>
     <!-- Content -->
