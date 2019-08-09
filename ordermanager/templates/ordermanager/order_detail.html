@@ -3,4 +3,12 @@
 
     <h1 class="ordertitle">{{ order.order_number }}</h1>
 
+    <p>{{ order.title|safe|linebreaks }}</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'order_edit' pk=post.pk %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </a>
+    {% endif %}
+
 {% endblock %}
