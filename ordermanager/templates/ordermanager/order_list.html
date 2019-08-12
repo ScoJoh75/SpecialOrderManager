@@ -4,7 +4,7 @@
     {% for order in order_list %}
         <div class="order">
             <h1><a href="{% url 'order_detail' pk=order.pk %}">{{ order.order_number }}</a></h1>
-            <div class="date"> <p>Posted: {{ order.date|date:"D M Y" }}</p></div>
+            <div class="date"> <p>Posted: {{ order.date|date:"M d Y" }}</p></div>
         </div>
     {% endfor %}
 </div>
