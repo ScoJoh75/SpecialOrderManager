@@ -1,0 +1,9 @@
+{% extends "ordermanager/base.html" %}
+{% block content %}
+    <h1>Enter a new Contact</h1>
+    <form class="contact-form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-primary">Save</button>
+    </form>
+{% endblock %}

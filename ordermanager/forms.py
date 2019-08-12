@@ -39,7 +39,7 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ('first_name', 'last_name', 'email_address', 'site', 'active')
 
-        widgets= {
+        widgets = {
             'first_name': forms.TextInput(attrs={'class': 'textinputclass'}),
             'last_name': forms.TextInput(attrs={'class': 'textinputclass'}),
             'email_address': forms.EmailInput(attrs={'class': 'textinputclass'}),

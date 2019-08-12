@@ -108,5 +108,8 @@ class Contact(models.Model):
         self.active = False
         self.save()
 
+    def get_absolute_url(self):
+        return reverse("contact_detail", kwargs={'pk': self.pk})
+
     def __str__(self):
-        return self.first_name + " " + self.last_name
+        return f"{self.first_name} {self.last_name}"

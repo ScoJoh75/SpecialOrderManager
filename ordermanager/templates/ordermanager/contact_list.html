@@ -1,0 +1,10 @@
+{% extends "ordermanager/base.html" %}
+{% block content %}
+<div class="centerstage">
+    {% for contact in contact_list %}
+        <div class="contact">
+            <h1><a href="{% url 'contact_detail' pk=contact.pk %}">{{ contact }}</a></h1>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

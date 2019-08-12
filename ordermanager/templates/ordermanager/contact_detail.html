@@ -1,0 +1,18 @@
+{% extends "ordermanager/base.html" %}
+{% block content %}
+
+    <h1 class="contacttitle">{{ contact.first_name }}</h1>
+
+    <p>Name: {{ contact.first_name|safe|linebreaksbr }} {{ contact.last_name|safe|linebreaksbr }}</p>
+    <p>Email Address: {{ contact.email_address|safe|linebreaksbr }}</p>
+    <p>Site: {{ contact.site|safe|linebreaksbr }}</p>
+    <p>Active User: {{ contact.active|safe|linebreaksbr }}</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary" href="{% url 'contact_edit' pk=contact.pk %}">
+{#            <span class="glyphicon glyphicon-pencil"></span>#}
+            Edit
+        </a>
+    {% endif %}
+
+{% endblock %}
