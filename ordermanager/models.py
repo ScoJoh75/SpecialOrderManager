@@ -85,7 +85,7 @@ class Order(models.Model):
         return reverse("order_detail", kwargs={'pk': self.pk})
 
     def __str__(self):
-        return self.product_name
+        return f"{self.order_number} {self.product_name} {self.date}"
 
 
 class Contact(models.Model):

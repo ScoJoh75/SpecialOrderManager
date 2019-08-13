@@ -7,7 +7,6 @@
 
     {% if user.is_authenticated %}
         <a class="btn btn-primary" href="{% url 'order_edit' pk=order.pk %}">
-{#            <span class="glyphicon glyphicon-pencil"></span>#}
             Edit
         </a>
     {% endif %}

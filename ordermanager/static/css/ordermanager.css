@@ -12,3 +12,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.order a{
+    font-size: 1.5em!important;
+}
+
+.welcome{
+    font-family: 'Russo One', sans-serif;
+    font-size: 1em;
+    color: white!important;
+}
