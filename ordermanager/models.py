@@ -5,15 +5,15 @@ from django.urls import reverse
 
 class Order(models.Model):
     CUSTOMERS = (
-        ("AWC", "American Woodmark Corporation"),
+        ("American Woodmark Corporation", "American Woodmark Corporation"),
         ("ACP", "ACP"),
-        ("JB", "Jim Bishop"),
-        ("FT", "Fabritec"),
-        ("HM", "Hanssem"),
-        ("KA", "KabinArt"),
-        ("LG", "Legacy"),
-        ("MBC", "MasterBrand Cabinets, Inc"),
-        ("UNI", "Unicor"),
+        ("Jim Bishop", "Jim Bishop"),
+        ("Fabritec", "Fabritec"),
+        ("Hanssem", "Hanssem"),
+        ("KabinArt", "KabinArt"),
+        ("Legacy", "Legacy"),
+        ("MasterBrand Cabinets, Inc", "MasterBrand Cabinets, Inc"),
+        ("Unicor", "Unicor"),
     )
 
     CARRIER = (
@@ -33,43 +33,43 @@ class Order(models.Model):
         ("FXPAM", "FXPAM"),
         ("FXGRN", "FXGRN"),
         ("FXFNL", "FXFNL"),
-        ("CUSPK", "Customer Pickup"),
+        ("Customer Pickup", "Customer Pickup"),
     )
 
     REASON = (
-        ("NEW", "New Product"),
-        ("NA", "Not Applicable"),
-        ("US", "Unusual Size"),
-        ("UP", "Unusual Profile"),
-        ("UM", "Unusual Material"),
-        ("OP", "Obsolete Product"),
-        ("NMS", "Non-Existing Material Specification"),
-        ("CS", "Customer Sample"),
-        ("SA", "Special Assembly"),
-        ("SI", "Special Inspection"),
-        ("SP", "Special Packaging"),
-        ("PFT", "Profile Testing"),
-        ("PRT", "Process Testing"),
+        ("New Product", "New Product"),
+        ("Not Applicable", "Not Applicable"),
+        ("Unusual Size", "Unusual Size"),
+        ("Unusual Profile", "Unusual Profile"),
+        ("Unusual Material", "Unusual Material"),
+        ("Obsolete Product", "Obsolete Product"),
+        ("Non-Existing Material Specification", "Non-Existing Material Specification"),
+        ("Customer Sample", "Customer Sample"),
+        ("Special Assembly", "Special Assembly"),
+        ("Special Inspection", "Special Inspection"),
+        ("Special Packaging", "Special Packaging"),
+        ("Profile Testing", "Profile Testing"),
+        ("Process Testing", "Process Testing"),
     )
 
     TOOLING = (
-        ("ONF", "On Floor"),
-        ("IGR", "In Grinding Room"),
-        ("OTR", "Other - See Notes"),
+        ("On Floor", "On Floor"),
+        ("In Grinding Room", "In Grinding Room"),
+        ("Other - See Notes", "Other - See Notes"),
     )
 
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     order_number = models.CharField(max_length=255)
-    order_reason = models.CharField(max_length=3, choices=REASON)
-    customer = models.CharField(max_length=3, choices=CUSTOMERS)
+    order_reason = models.CharField(max_length=50, choices=REASON)
+    customer = models.CharField(max_length=50, choices=CUSTOMERS)
     product_name = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     design_code = models.CharField(max_length=255)
-    carrier = models.CharField(max_length=5, choices=CARRIER)
+    carrier = models.CharField(max_length=20, choices=CARRIER)
     ship_date = models.DateField()
     process_date = models.DateField()
     sequence_numbers = models.CharField(max_length=255)
-    tooling_status = models.CharField(max_length=3, choices=TOOLING)
+    tooling_status = models.CharField(max_length=20, choices=TOOLING)
     programming_status = models.BooleanField(default=False)
     engineering_framing_setup = models.BooleanField(default=False)
     engineering_panel_setup = models.BooleanField(default=False)
@@ -85,7 +85,7 @@ class Order(models.Model):
         return reverse("order_detail", kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f"{self.order_number} {self.product_name} {self.date}"
+        return f"{self.date.strftime('%m/%d/%Y')}  {self.order_number}  {self.product_name}"
 
 
 class Contact(models.Model):
@@ -94,9 +94,9 @@ class Contact(models.Model):
         ("BVT", "Beavertown"),
     )
 
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    email_address = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email_address = models.CharField(max_length=100)
     site = models.CharField(max_length=3, choices=SITES)
     active = models.BooleanField(default=True)
 

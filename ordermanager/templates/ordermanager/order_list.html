@@ -4,9 +4,6 @@
     {% for order in order_list %}
         <div class="order">
             <a href="{% url 'order_detail' pk=order.pk %}">{{ order }}</a>
-{#            Product Name: {{ order.product_name }}#}
-{#            Posted: {{ order.date|date:"M d Y" }}#}
-{#            <div class="date"> <p>Posted: {{ order.date|date:"M d Y" }}</p></div>#}
         </div>
     {% endfor %}
 </div>

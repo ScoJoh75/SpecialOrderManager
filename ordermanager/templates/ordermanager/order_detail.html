@@ -2,8 +2,27 @@
 {% block content %}
 
     <h1 class="ordertitle">{{ order.order_number }}</h1>
-
-    <p>{{ order.title|safe|linebreaksbr }}</p>
+    <p>Order Reason: {{ order.order_reason }}</p>
+    <p>Customer: {{ order.customer }}</p>
+    <p>Product Name: {{ order.product_name }}</p>
+    <p>Title: {{ order.title }}</p>
+    <p>Design Code: {{ order.design_code }}</p>
+    <p>Carrier: {{ order.carrier }}</p>
+    <p>Ship Date: {{ order.ship_date }}</p>
+    <p>Processing Date: {{ order.process_date }}</p>
+    <p>Sequence Numbers: {{ order.sequence_numbers }}</p>
+    <p>Tooling Status: {{ order.tooling_status }}</p>
+    <p>Programming Status: {{ order.progamming_status }}</p>
+    <p><b>Engineering Concerns:</b></p>
+    <p>Framing Setup: {{ order.engineering_framing_setup }}</p>
+    <p>Panel Setup: {{ order.engineering_panel_setup }}</p>
+    <p>Lipping Setup: {{ order.engineering_lipping_setup }}</p>
+    <p>Assembly: {{ order.engineering_assembly }}</p>
+    <p>Options: {{ order.engineering_options }}</p>
+    <p>Other (See notes): {{ order.engineering_other }}</p>
+    <p>Order Notes: {{ order.order_notes }}</p>
+    <p>Customer Feedback: {{ order.feedback }}</p>
+    <p>Date Order Entered: {{ order.date }}</p>
 
     {% if user.is_authenticated %}
         <a class="btn btn-primary" href="{% url 'order_edit' pk=order.pk %}">
