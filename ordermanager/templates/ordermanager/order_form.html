@@ -1,9 +1,10 @@
 {% extends "ordermanager/base.html" %}
+{% load bootstrap4 %}
 {% block content %}
     <h1>Enter a new Order</h1>
     <form class="order-form" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
         <button type="submit" class="save btn btn-primary">Save</button>
     </form>
 {% endblock %}
