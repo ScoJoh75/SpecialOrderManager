@@ -79,7 +79,7 @@ class Order(models.Model):
     engineering_other = models.BooleanField(default=False)
     order_notes = models.TextField(blank=True, null=True)
     feedback = models.TextField(blank=True, null=True)
-    date = models.DateTimeField(default=timezone.now)
+    date = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
         return reverse("order_detail", kwargs={'pk': self.pk})

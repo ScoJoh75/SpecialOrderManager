@@ -8,7 +8,7 @@ class OrderForm(forms.ModelForm):
         fields = ('author', 'order_number', 'order_reason', 'customer', 'product_name', 'title', 'design_code',
                   'carrier', 'ship_date', 'process_date', 'sequence_numbers', 'tooling_status', 'programming_status',
                   'engineering_framing_setup', 'engineering_panel_setup', 'engineering_lipping_setup',
-                  'engineering_assembly', 'engineering_options', 'engineering_other', 'order_notes', 'feedback', 'date')
+                  'engineering_assembly', 'engineering_options', 'engineering_other', 'order_notes', 'feedback')
 
         widgets = {
             'order_number': forms.TextInput(attrs={'class': 'textinputclass'}),
@@ -18,8 +18,8 @@ class OrderForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'textinputclass'}),
             'design_code': forms.TextInput(attrs={'class': 'textinputclass'}),
             'carrier': forms.Select(attrs={'class': 'comboinputclass'}),
-            'ship_date': forms.DateInput(attrs={'class': 'dateinputclass'}),
-            'process_date': forms.DateInput(attrs={'class': 'dateinputclass'}),
+            'ship_date': forms.DateInput(attrs={'type': 'date', 'placeholder': 'mm/dd/yyyy'}),
+            'process_date': forms.DateInput(attrs={'type': 'date', 'placeholder': 'mm/dd/yyyy'}),
             'sequence_numbers': forms.TextInput(attrs={'class': 'textinputclass'}),
             'tooling_status': forms.Select(attrs={'class': 'comboinputclass'}),
             'programming_status': forms.CheckboxInput(),
