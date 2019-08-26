@@ -127,4 +127,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
+# Email configuration
+EMAIL_HOST = 'mail.conestogawood.com'
+EMAIL_PORT = 25
+# EMAIL_USE_TLS = True
+EMAIL_TIMEOUT = 10
+
+# Acceptable IPs for DebugToolbar
 INTERNAL_IPS = ['127.0.0.1']

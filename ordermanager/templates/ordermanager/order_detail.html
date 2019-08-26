@@ -29,35 +29,35 @@
     <table>
         <tr><th colspan="6"><b>Engineering Concerns:</b></th></tr>
         <tr>
-            <td>Framing Setup:</td>
-            <td><input type="checkbox" disabled
+            <td><label for="framing">Framing Setup:</label></td>
+            <td><input id="framing" type="checkbox" disabled
                 {% if order.engineering_framing_setup %}
                     checked
                 {% endif %}></td>
-            <td>Panel Setup:</td>
-            <td><input type="checkbox" disabled
+            <td><label for="panel">Panel Setup:</label></td>
+            <td><input id="panel" type="checkbox" disabled
                 {% if order.engineering_panel_setup %}
                     checked
                 {% endif %}></td>
-            <td>Lipping Setup:</td>
-            <td><input type="checkbox" class="checkbox" disabled
+            <td><label for="lipping">Lipping Setup:</label></td>
+            <td><input id="lipping" type="checkbox" class="checkbox" disabled
                 {% if order.engineering_lipping_setup %}
                     checked
                 {% endif %}></td>
         </tr>
         <tr>
-            <td>Assembly:</td>
-            <td><input type="checkbox" class="checkbox" disabled
+            <td><label for="assembly">Assembly:</label></td>
+            <td><input id="assembly" type="checkbox" class="checkbox" disabled
                 {% if order.engineering_assembly %}
                     checked
                 {% endif %}></td>
-            <td>Options:</td>
-            <td><input type="checkbox" class="checkbox" disabled
+            <td><label for="options">Options:</label></td>
+            <td><input id="options" type="checkbox" class="checkbox" disabled
                 {% if order.engineering_options %}
                     checked
                 {% endif %}></td>
-            <td>Other (See notes):</td>
-            <td><input type="checkbox" class="checkbox" disabled
+            <td><label for="other">Other (See notes):</label></td>
+            <td><input id="other" type="checkbox" class="checkbox" disabled
                 {% if order.engineering_other %}
                     checked
                 {% endif %}></td>
