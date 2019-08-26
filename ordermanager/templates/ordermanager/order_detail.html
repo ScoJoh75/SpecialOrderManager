@@ -5,29 +5,29 @@
     <h1 class="ordertitle">{{ order.order_number }}
     {% if user.is_authenticated %}
         {% buttons %}
-            <a class="btn btn-primary" href="{% url 'order_edit' pk=order.pk %}">
+            <a class="btn btn-primary btn-lg" href="{% url 'order_edit' pk=order.pk %}">
                 Edit Order Details
             </a>
         {% endbuttons %}
     {% endif %}</h1>
-    <p>Order Reason: {{ order.order_reason }}</p>
-    <p>Customer: {{ order.customer }}</p>
-    <p>Product Name: {{ order.product_name }}</p>
-    <p>Title: {{ order.title }}</p>
-    <p>Design Code: {{ order.design_code }}</p>
-    <p>Carrier: {{ order.carrier }}</p>
-    <p>Ship Date: {{ order.ship_date }}</p>
-    <p>Processing Date: {{ order.process_date }}</p>
-    <p>Sequence Numbers: {{ order.sequence_numbers }}</p>
-    <p>Tooling Status: {{ order.tooling_status }}</p>
-    <p><label>Programming Status:
-            <input type="checkbox" class="largercheckbox" disabled
+    <p><b>Order Reason: </b>{{ order.order_reason }}</p>
+    <p><b>Customer: </b>{{ order.customer }}</p>
+    <p><b>Product Name: </b>{{ order.product_name }}</p>
+    <p><b>Title: </b>{{ order.title }}</p>
+    <p><b>Design Code: </b>{{ order.design_code }}</p>
+    <p><b>Carrier: </b>{{ order.carrier }}</p>
+    <p><b>Ship Date: </b>{{ order.ship_date }}</p>
+    <p><b>Processing Date: </b>{{ order.process_date }}</p>
+    <p><b>Sequence Numbers: </b>{{ order.sequence_numbers }}</p>
+    <p><b>Tooling Status: </b>{{ order.tooling_status }}</p>
+    <p><b><label>Programming Status:
+            <input type="checkbox" disabled
             {% if order.programming_status %}
                     checked
             {% endif %}>
-        </label></p>
+        </label></b></p>
     <table>
-        <tr><th colspan="4"><b>Engineering Concerns:</b></th></tr>
+        <tr><th colspan="6"><b>Engineering Concerns:</b></th></tr>
         <tr>
             <td>Framing Setup:</td>
             <td><input type="checkbox" disabled
@@ -39,20 +39,18 @@
                 {% if order.engineering_panel_setup %}
                     checked
                 {% endif %}></td>
-        </tr>
-        <tr>
             <td>Lipping Setup:</td>
             <td><input type="checkbox" class="checkbox" disabled
                 {% if order.engineering_lipping_setup %}
                     checked
                 {% endif %}></td>
+        </tr>
+        <tr>
             <td>Assembly:</td>
             <td><input type="checkbox" class="checkbox" disabled
                 {% if order.engineering_assembly %}
                     checked
                 {% endif %}></td>
-        </tr>
-        <tr>
             <td>Options:</td>
             <td><input type="checkbox" class="checkbox" disabled
                 {% if order.engineering_options %}
@@ -65,44 +63,8 @@
                 {% endif %}></td>
         </tr>
     </table>
-{#    <p><label>Framing Setup:#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_framing_setup %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-{#    <p><label>Panel Setup:#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_panel_setup %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-{#    <p><label>Lipping Setup:#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_lipping_setup %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-{#    <p><label>Assembly:#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_assembly %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-{#    <p><label>Options:#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_options %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-{#    <p><label>Other (See notes):#}
-{#        <input type="checkbox" class="checkbox" disabled#}
-{#            {% if order.engineering_other %}#}
-{#                checked#}
-{#            {% endif %}>#}
-{#        </label></p>#}
-    <p>Order Notes: {{ order.order_notes }}</p>
-    <p>Customer Feedback: {{ order.feedback }}</p>
-    <p>Date Order Entered: {{ order.date }}</p>
+    <p><b>Order Notes: </b>{{ order.order_notes }}</p>
+    <p><b>Customer Feedback: </b>{{ order.feedback }}</p>
+    <p><b>Date Order Entered: </b>{{ order.date }}</p>
 
 {% endblock %}

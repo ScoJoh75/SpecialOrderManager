@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.urls import reverse
 
 
@@ -99,14 +98,6 @@ class Contact(models.Model):
     email_address = models.CharField(max_length=100)
     site = models.CharField(max_length=3, choices=SITES)
     active = models.BooleanField(default=True)
-
-    def make_active(self):
-        self.active = True
-        self.save()
-
-    def make_inactive(self):
-        self.active = False
-        self.save()
 
     def get_absolute_url(self):
         return reverse("contact_detail", kwargs={'pk': self.pk})
