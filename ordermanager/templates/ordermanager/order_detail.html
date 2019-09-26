@@ -8,8 +8,14 @@
             <a class="btn btn-primary btn-lg" href="{% url 'order_edit' pk=order.pk %}">
                 Edit Order Details
             </a>
+        {% if order.order_reason == "Non-Existing Material Specification" or order.order_reason == "Customer Sample" or order.order_reason == "Special Assembly" or order.order_reason == "Special Packaging" or order.order_reason == "Profile Testing" or order.order_reason == "Process Testing" %}
+            <a class="btn btn-info btn-lg" href="{% url 'handling_tag' pk=order.pk %}">
+                {{ "View Handling Tag" }}
+            </a>
+        {% endif %}
         {% endbuttons %}
-    {% endif %}</h1>
+    {% endif %}
+    </h1>
     <p><b>Order Reason: </b>{{ order.order_reason }}</p>
     <p><b>Customer: </b>{{ order.customer }}</p>
     <p><b>Product Name: </b>{{ order.product_name }}</p>

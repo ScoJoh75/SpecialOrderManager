@@ -42,13 +42,13 @@ class Order(models.Model):
         ("Unusual Profile", "Unusual Profile"),
         ("Unusual Material", "Unusual Material"),
         ("Obsolete Product", "Obsolete Product"),
-        ("Non-Existing Material Specification", "Non-Existing Material Specification"),
-        ("Customer Sample", "Customer Sample"),
-        ("Special Assembly", "Special Assembly"),
+        ("Non-Existing Material Specification", "Non-Existing Material Specification"),  # Order 26
+        ("Customer Sample", "Customer Sample"),  # Order 26
+        ("Special Assembly", "Special Assembly"),  # Order 26
         ("Special Inspection", "Special Inspection"),
-        ("Special Packaging", "Special Packaging"),
-        ("Profile Testing", "Profile Testing"),
-        ("Process Testing", "Process Testing"),
+        ("Special Packaging", "Special Packaging"),  # Order 26
+        ("Profile Testing", "Profile Testing"),  # Order 26
+        ("Process Testing", "Process Testing"),  # Order 26
     )
 
     TOOLING = (

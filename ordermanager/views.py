@@ -21,6 +21,11 @@ class OrderDetailView(DetailView):
     model = Order
 
 
+class OrderHandlingTag(DetailView):
+    model = Order
+    template_name = 'handling_tag.html'
+
+
 class CreateOrderView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'ordermanager/order_detail.html'

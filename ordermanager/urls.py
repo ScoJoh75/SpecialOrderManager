@@ -11,4 +11,5 @@ urlpatterns = [
     path('contact/<int:pk>', views.ContactDetailView.as_view(), name='contact_detail'),
     path('contact/new/', views.AddContactView.as_view(), name='contact_new'),
     path('contact/<int:pk>/edit/', views.ContactUpdateView.as_view(), name='contact_edit'),
+    path('handlingtag/<int:pk>', views.OrderHandlingTag.as_view(), name='handling_tag'),
 ]
