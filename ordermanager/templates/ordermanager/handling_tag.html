@@ -1,0 +1,13 @@
+{% extends "ordermanager/base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+    <h1 class="ordertitle">{{ order.order_number }}
+    {% if order.order_reason == "Non-Existing Material Specification" or order.order_reason == "Customer Sample" or order.order_reason == "Special Assembly" or order.order_reason == "Special Packaging" or order.order_reason == "Profile Testing" or order.order_reason == "Process Testing" %}
+        This is indeed a project that requires a special handling tag!
+    {% else %}
+        This is not the handling tag you are looking for!
+    {% endif %}
+    </h1>
+
+{% endblock %}
