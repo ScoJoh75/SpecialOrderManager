@@ -44,24 +44,27 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
         self.object.date = datetime.now()
         self.object.save()
         email_subject = f"Special Order: {self.object.order_number} is ready for release"
-        html_message = render_to_string('bvs_email_template.html',
-                                        {'order_pk': self.object.pk,
-                                         'order_number': self.object.order_number,
-                                         'customer': self.object.customer,
-                                         'product_name': self.object.product_name,
-                                         'design_code': self.object.design_code,
-                                         'order_reason': self.object.order_reason,
-                                         'process_date': self.object.process_date,
-                                         'ship_date': self.object.ship_date,
-                                         'sequence_numbers': self.object.sequence_numbers,
-                                         'tooling_status': self.object.tooling_status,
-                                         'programming_status': self.object.programming_status,
-                                         'order_notes': self.object.order_notes,
-                                         'engineering_framing_setup': self.object.engineering_framing_setup})
-        plain_massage = strip_tags(html_message)
-        from_email = 'sjohnson@conestogawood.com'
+        order_data = {'order_pk': self.object.pk,
+                      'order_number': self.object.order_number,
+                      'customer': self.object.customer,
+                      'product_name': self.object.product_name,
+                      'design_code': self.object.design_code,
+                      'order_reason': self.object.order_reason,
+                      'process_date': self.object.process_date,
+                      'ship_date': self.object.ship_date,
+                      'sequence_numbers': self.object.sequence_numbers,
+                      'tooling_status': self.object.tooling_status,
+                      'programming_status': self.object.programming_status,
+                      'order_notes': self.object.order_notes,
+                      'engineering_framing_setup': self.object.engineering_framing_setup}
+        html_message_bvs = render_to_string('bvs_email_template.html', order_data)
+        html_message_bvt = render_to_string('bvt_email_template.html', order_data)
+        plain_message_bvs = strip_tags(html_message_bvs)
+        plain_message_bvt = strip_tags(html_message_bvt)
+        from_email = 'adiehl@conestogawood.com'
         to = 'sjohnson@conestogawood.com'
-        send_mail(email_subject, plain_massage, from_email, [to], html_message=html_message)
+        send_mail(email_subject, plain_message_bvt, from_email, [to], html_message=html_message_bvt)
+        send_mail(email_subject, plain_message_bvs, from_email, [to], html_message=html_message_bvs)
         return super().form_valid(form)
 
 
