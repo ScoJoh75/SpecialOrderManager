@@ -8,7 +8,6 @@
 <div>Finish Mill,</div><br/>
 <div>The order# {{ order_number }} for {{ customer }} {{ product_name }} has been released for production.</div><br/>
 {% if order_reason == "Non-Existing Material Specification" or order_reason == "Customer Sample" or order_reason == "Special Assembly" or order_reason == "Special Packaging" or order_reason == "Profile Testing" or order_reason == "Process Testing" %}
-
 {% elif order_reason == "New Product" %}
     <div>This is a new product order, and will be arriving on green paper.</div>
 {% else %}
@@ -44,6 +43,5 @@
     <p>Thank you!</p>
     <p>- Aaron</p>
 </div>
-
 </body>
 </html>

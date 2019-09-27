@@ -43,7 +43,7 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
         self.object.author = self.request.user
         self.object.date = datetime.now()
         self.object.save()
-        email_subject = f"Special Order: {self.object.order_number} is ready for release"
+        # Captures newly saved objects information for emails.
         order_data = {'order_pk': self.object.pk,
                       'order_number': self.object.order_number,
                       'customer': self.object.customer,
@@ -57,14 +57,7 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
                       'programming_status': self.object.programming_status,
                       'order_notes': self.object.order_notes,
                       'engineering_framing_setup': self.object.engineering_framing_setup}
-        html_message_bvs = render_to_string('bvs_email_template.html', order_data)
-        html_message_bvt = render_to_string('bvt_email_template.html', order_data)
-        plain_message_bvs = strip_tags(html_message_bvs)
-        plain_message_bvt = strip_tags(html_message_bvt)
-        from_email = 'adiehl@conestogawood.com'
-        to = 'sjohnson@conestogawood.com'
-        send_mail(email_subject, plain_message_bvt, from_email, [to], html_message=html_message_bvt)
-        send_mail(email_subject, plain_message_bvs, from_email, [to], html_message=html_message_bvs)
+        send_order_emails(order_data)
         return super().form_valid(form)
 
 
@@ -98,3 +91,16 @@ class ContactUpdateView(LoginRequiredMixin, UpdateView):
     redirect_field_name = 'ordermanager/contact_detail.html'
     form_class = ContactForm
     model = Contact
+
+
+def send_order_emails(order_data):
+    email_subject = f"Special Order: {order_data['order_number']} is ready for release"
+    html_message_bvs = render_to_string('bvs_email_template.html', order_data)
+    html_message_bvt = render_to_string('bvt_email_template.html', order_data)
+    plain_message_bvs = strip_tags(html_message_bvs)
+    plain_message_bvt = strip_tags(html_message_bvt)
+    from_email = 'adiehl@conestogawood.com'
+    to_bvs = 'sjohnson@conestogawood.com'
+    to_bvt = 'sjohnson@conestogawood.com'
+    send_mail(email_subject, plain_message_bvt, from_email, [to_bvt], html_message=html_message_bvt)
+    send_mail(email_subject, plain_message_bvs, from_email, [to_bvs], html_message=html_message_bvs)
