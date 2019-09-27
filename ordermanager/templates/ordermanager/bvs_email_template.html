@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Order</title>
+</head>
+<body>
+<div>Finish Mill,</div><br/>
+<div>The new product order# {{ order_number }} for {{ customer }} {{ product_name }} has been released for production.</div><br/>
+<div>This is a new product order, and will be arriving on green paper. Here is the information regarding this order:</div>
+<div>
+    <p>
+    Design code: {{ design_code }}<br/>
+    Special order reason: {{ order_reason }}<br/>
+    Product name: {{ product_name }}<br/>
+    Customer: {{ customer }}<br/>
+    Assembly/Lipping date: {{ process_date }}<br/>
+    Ship Date: {{ ship_date }}<br/>
+    Order number(s): {{ order_number }}<br/>
+    Sequence number(s): {{ sequence_numbers }}<br/>
+    Tooling status: {{ tooling_status }}<br/>
+    Programming status: {{ programming_status }}<br/>
+    Engineering concerns: {{ engineering_framing_setup }}<br/>
+    Order notes: {{ order_notes }}<br/>
+    </p>
+    <p>Thank you!</p>
+    <p>- Aaron</p>
+</div>
+
+</body>
+</html>
