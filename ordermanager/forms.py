@@ -5,7 +5,7 @@ from ordermanager.models import Order, Contact
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('author', 'order_number', 'order_reason', 'customer', 'product_name', 'title', 'design_code',
+        fields = ('order_number', 'order_reason', 'customer', 'product_name', 'title', 'design_code',
                   'carrier', 'ship_date', 'process_date', 'sequence_numbers', 'tooling_status', 'programming_status',
                   'engineering_framing_setup', 'engineering_panel_setup', 'engineering_lipping_setup',
                   'engineering_assembly', 'engineering_options', 'engineering_other', 'order_notes', 'feedback')

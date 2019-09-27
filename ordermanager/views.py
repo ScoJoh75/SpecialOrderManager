@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from ordermanager.models import Order, Contact
 from django.views.generic import (TemplateView, ListView, DetailView, CreateView, UpdateView)
@@ -31,6 +32,14 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
     redirect_field_name = 'ordermanager/order_detail.html'
     form_class = OrderForm
     model = Order
+
+#     Adding to test
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        send_mail("Test message", f"Hello, this is a test for order#{self.object.order_number}", "sjohnson@conestogawood.com", ["sjohnson@conestogawood.com"])
+        return super().form_valid(form)
 
 
 class OrderUpdateView(LoginRequiredMixin, UpdateView):
