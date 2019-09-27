@@ -96,7 +96,7 @@
                                                 </H3>
                                             </td>
                                             <td valign="top" class="style7">
-                                                <span class="style7">Special order #</span>684038, 684045, 684048, 684019, 684023
+                                                <span class="style7">Special order #</span>{{order.order_number}}
                                             </td>
                                         </tr>
                                         <tr>
@@ -111,16 +111,11 @@
                                             </td>
                                             <td valign="top">
                                                 <span class="style7">
-                                                    <div>684038&nbsp;-&nbsp; AWC internal display for product launch</div>
-                                                    <div>684045&nbsp; -&nbsp; AWC internal display for product launch </div>
-                                                    <div>684048&nbsp;  -&nbsp; AWC internal display for product launch</div>
-                                                    <div>&nbsp;</div>
-                                                    <div>684019 - Last segment of 50/50 panel thickness project</div>
-                                                    <div>684023 - Last segment of 50/50 panel thickness project</div>
-                                                    <div>&nbsp;</div>
-                                                    <div><font color="#0000ff">Must Use C3 Panel Tooling (Blue Dot)</font></div>
-                                                    <div><font color="#000000">Send to EE for Priming</font></div>
-                                                    <div><font color="#ff0000">Engineering Involvement Required at Profile Sand after Priming.</font></div></span>
+                                                    <div>{{ order.order_notes }}</div>
+                                                </span><br/>
+                                                <span class="style7">
+                                                    <div>{{ order.feedback }}</div>
+                                                </span>
                                             </td>
                                         </tr>
                                         <tr>
