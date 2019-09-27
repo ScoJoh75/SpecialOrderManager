@@ -17,25 +17,25 @@
 <div>
     <div>Here is the information regarding this order:</div>
     <p>
-    Design code: {{ design_code }}<br/>
-    Special order reason: {{ order_reason }}<br/>
-    Product name: {{ product_name }}<br/>
-    Customer: {{ customer }}<br/>
-    Assembly/Lipping date: {{ process_date }}<br/>
-    Ship Date: {{ ship_date }}<br/>
-    Order number(s): {{ order_number }}<br/>
-    Sequence number(s): {{ sequence_numbers }}<br/>
-    Tooling status: {{ tooling_status }}<br/>
-    Programming status: {{ programming_status }}<br/>
-    Engineering concerns: {{ engineering_framing_setup }}<br/>
-    Order notes: {{ order_notes }}<br/>
+        Design code: {{ design_code }}<br/>
+        Special order reason: {{ order_reason }}<br/>
+        Product name: {{ product_name }}<br/>
+        Customer: {{ customer }}<br/>
+        Assembly/Lipping date: {{ process_date }}<br/>
+        Ship Date: {{ ship_date }}<br/>
+        Order number(s): {{ order_number }}<br/>
+        Sequence number(s): {{ sequence_numbers }}<br/>
+        Tooling status: {{ tooling_status }}<br/>
+        Programming status: {{ programming_status }}<br/>
+        Engineering concerns: {{ engineering_framing_setup }}<br/>
+        Order notes: {{ order_notes }}<br/>
     </p>
     {% if order_reason != "New Product" %}
         <div>Team leaders, if programming status is not "completed" you must coordinate with the maintenance department to get this accomplished.</div><br/>
         {% if order_reason == "Non-Existing Material Specification" or order_reason == "Customer Sample" or order_reason == "Special Assembly" or order_reason == "Special Packaging" or order_reason == "Profile Testing" or order_reason == "Process Testing" %}
             <div>Quality department, please include engineering concerns on new product/sample sign off sheets.</div><br/>
             <div>The special handling tag that will be attached to this paperwork can be seen here:
-            <a href="">Special Handling tag!</a>
+            <a href="127.0.0.1:8000/handlingtag/{{ order_pk }}">Special Handling tag!</a>
             </div><br/>
         {% else %}
             <div>This order has no special handling tag</div>

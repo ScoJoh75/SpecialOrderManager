@@ -45,7 +45,8 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
         self.object.save()
         email_subject = f"Special Order: {self.object.order_number} is ready for release"
         html_message = render_to_string('bvs_email_template.html',
-                                        {'order_number': self.object.order_number,
+                                        {'order_pk': self.object.pk,
+                                         'order_number': self.object.order_number,
                                          'customer': self.object.customer,
                                          'product_name': self.object.product_name,
                                          'design_code': self.object.design_code,
