@@ -4,6 +4,9 @@ from ordermanager.models import Order, Contact
 from django.views.generic import (TemplateView, ListView, DetailView, CreateView, UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from ordermanager.forms import OrderForm, ContactForm
+from datetime import datetime
+
+
 # Create your views here.
 
 
@@ -33,12 +36,14 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
     form_class = OrderForm
     model = Order
 
-#     Adding to test
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.author = self.request.user
+        self.object.date = datetime.now()
         self.object.save()
-        send_mail("Test message", f"Hello, this is a test for order#{self.object.order_number}", "sjohnson@conestogawood.com", ["sjohnson@conestogawood.com"])
+        email_subject = f"Special Order: {self.object.order_number} is ready for release"
+        send_mail(email_subject, f"Hello, this is a test for order#{self.object.order_number}",
+                  "sjohnson@conestogawood.com", ["sjohnson@conestogawood.com"])
         return super().form_valid(form)
 
 
