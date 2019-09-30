@@ -100,7 +100,14 @@ def send_order_emails(order_data):
     plain_message_bvs = strip_tags(html_message_bvs)
     plain_message_bvt = strip_tags(html_message_bvt)
     from_email = 'adiehl@conestogawood.com'
-    to_bvs = 'sjohnson@conestogawood.com'
-    to_bvt = 'sjohnson@conestogawood.com'
-    send_mail(email_subject, plain_message_bvt, from_email, [to_bvt], html_message=html_message_bvt)
-    send_mail(email_subject, plain_message_bvs, from_email, [to_bvs], html_message=html_message_bvs)
+    to_bvs = []
+    to_bvt = []
+    contacts = Contact.objects.filter(active=True)
+    for contact in contacts:
+        if contact.site == 'BVS':
+            to_bvs.append(contact.email_address)
+        else:
+            to_bvt.append(contact.email_address)
+
+    send_mail(email_subject, plain_message_bvt, from_email, to_bvt, html_message=html_message_bvt)
+    send_mail(email_subject, plain_message_bvs, from_email, to_bvs, html_message=html_message_bvs)
