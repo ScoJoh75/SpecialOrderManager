@@ -25,8 +25,45 @@
         Order number(s): {{ order_number }}<br/>
         Sequence number(s): {{ sequence_numbers }}<br/>
         Tooling status: {{ tooling_status }}<br/>
-        Programming status: {{ programming_status }}<br/>
-        Engineering concerns: {{ engineering_framing_setup }}<br/>
+
+        Programming status:
+        {% if programming_status %}
+            Completed
+        {% else %}
+            Not Complete
+        {% endif %}<br/><br/>
+        <b>Engineering Concerns:</b><br/>
+        <label for="framing">Framing Setup:</label>
+        <input id="framing" type="checkbox" disabled
+                {% if engineering_framing_setup %}
+                    checked
+                {% endif %}><br/>
+        <label for="panel">Panel Setup:</label>
+        <input id="panel" type="checkbox" disabled
+                {% if engineering_panel_setup %}
+                    checked
+                {% endif %}><br/>
+        <label for="lipping">Lipping Setup:</label>
+        <input id="lipping" type="checkbox" class="checkbox" disabled
+                {% if engineering_lipping_setup %}
+                    checked
+                {% endif %}><br/>
+        <label for="assembly">Assembly:</label>
+        <input id="assembly" type="checkbox" class="checkbox" disabled
+                {% if engineering_assembly %}
+                    checked
+                {% endif %}><br/>
+        <label for="options">Options:</label>
+        <input id="options" type="checkbox" class="checkbox" disabled
+                {% if engineering_options %}
+                    checked
+                {% endif %}><br/>
+        <label for="other">Other (See notes):</label>
+        <input id="other" type="checkbox" class="checkbox" disabled
+                {% if engineering_other %}
+                    checked
+                {% endif %}><br/><br/>
+
         Order notes: {{ order_notes }}<br/>
     </p>
     {% if order_reason != "New Product" %}

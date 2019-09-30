@@ -1,5 +1,4 @@
 from django.core.mail import send_mail
-from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from ordermanager.models import Order, Contact
@@ -7,9 +6,6 @@ from django.views.generic import (TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from ordermanager.forms import OrderForm, ContactForm
 from datetime import datetime
-
-
-# Create your views here.
 
 
 class AboutView(TemplateView):
@@ -56,7 +52,12 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
                       'tooling_status': self.object.tooling_status,
                       'programming_status': self.object.programming_status,
                       'order_notes': self.object.order_notes,
-                      'engineering_framing_setup': self.object.engineering_framing_setup}
+                      'engineering_framing_setup': self.object.engineering_framing_setup,
+                      'engineering_panel_setup': self.object.engineering_panel_setup,
+                      'engineering_lipping_setup': self.object.engineering_lipping_setup,
+                      'engineering_assembly': self.object.engineering_assembly,
+                      'engineering_options': self.object.engineering_options,
+                      'engineering_other': self.object.engineering_other}
         send_order_emails(order_data)
         return super().form_valid(form)
 
@@ -72,7 +73,7 @@ class ContactListView(ListView):
     model = Contact
 
     def get_queryset(self):
-        return Contact.objects.filter().order_by('last_name')
+        return Contact.objects.filter(active=True).order_by('last_name', 'site')
 
 
 class ContactDetailView(DetailView):

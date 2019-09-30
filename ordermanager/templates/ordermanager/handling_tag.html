@@ -60,8 +60,6 @@
 </style>
 </head>
 <body>
-{% load bootstrap4 %}
-{% block content %}
 
     {% if order.order_reason == "Non-Existing Material Specification" or order.order_reason == "Customer Sample" or order.order_reason == "Special Assembly" or order.order_reason == "Special Packaging" or order.order_reason == "Profile Testing" or order.order_reason == "Process Testing" %}
 
@@ -160,6 +158,6 @@
     {% else %}
         <h1 class="style1"> {{ order.order_number }} Does not have a Special Handling Tag!</h1>
     {% endif %}
-{% endblock %}
+
 </body>
 </html>

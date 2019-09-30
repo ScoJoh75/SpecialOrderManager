@@ -103,4 +103,4 @@ class Contact(models.Model):
         return reverse("contact_detail", kwargs={'pk': self.pk})
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} - {self.site}"
