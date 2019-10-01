@@ -15,13 +15,13 @@ MSG_COLOR = COLORS['BOLD']
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
     source_folder = site_folder + '/source'
-    _install_java()
+    # _install_java()
     _install_nginx()
     _create_directory_structure_if_necessary(site_folder)
     _get_latest_source(source_folder)
     _update_settings(source_folder, env.host)
     _update_virtualenv(source_folder)
-    _apply_patch_to_jaydebeapi(source_folder)
+    # _apply_patch_to_jaydebeapi(source_folder)
     _update_static_files(source_folder)
     _update_database(site_folder, source_folder)
     _install_nginx_config(source_folder, env.host, env.user)
@@ -52,17 +52,17 @@ def _install_nginx():
 
 def _create_directory_structure_if_necessary(site_folder):
     print_msg('Creating/checking site directory structure...')
-    for subfolder in ('database', 'static', 'media', 'logs', 'virtualenv', 'source'):
+    for subfolder in ('database', 'static', 'virtualenv', 'source'):
         run(f'mkdir -p {site_folder}/{subfolder}')
     # Create media subfolders if they do not exist.
-    for subfolder in ('machines', 'parts', 'manuals', 'logs', 'pm_documents'):
-        run(f'mkdir -p {site_folder}/media/{subfolder}')
+    # for subfolder in ('machines', 'parts', 'manuals', 'logs', 'pm_documents'):
+    #     run(f'mkdir -p {site_folder}/media/{subfolder}')
     # Create the transaction log file if one does not already exist
-    if not exists(site_folder + '/logs/transaction.log'):
-        print_msg('Transaction log file not present.  Initializing now...')
-        run(f'touch {site_folder}/logs/transaction.log')
-    else:
-        print_msg('Transaction log already exists.  Skipping...')
+    # if not exists(site_folder + '/logs/transaction.log'):
+    #     print_msg('Transaction log file not present.  Initializing now...')
+    #     run(f'touch {site_folder}/logs/transaction.log')
+    # else:
+    #     print_msg('Transaction log already exists.  Skipping...')
 
 
 def _get_latest_source(source_folder):
@@ -120,7 +120,7 @@ def _update_static_files(source_folder):
 def _update_database(site_folder, source_folder):
     if not exists(site_folder + '/database/db.sqlite3'):
         print_msg('Database file does not exist.  Copying one into place.')
-        run(f'cd {source_folder} && cp deploy_tools/db.sqlite3 ../database/')
+        # run(f'cd {source_folder} && cp deploy_tools/db.sqlite3 ../database/')
     else:
         print_msg('Existing database is present, performing migrations...')
 
