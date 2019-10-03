@@ -58,7 +58,7 @@ class CreateOrderView(LoginRequiredMixin, CreateView):
                       'engineering_assembly': self.object.engineering_assembly,
                       'engineering_options': self.object.engineering_options,
                       'engineering_other': self.object.engineering_other}
-        send_order_emails(order_data)
+        send_order_emails(order_data, "New")
         return super().form_valid(form)
 
 
@@ -67,6 +67,32 @@ class OrderUpdateView(LoginRequiredMixin, UpdateView):
     redirect_field_name = 'ordermanager/order_detail.html'
     form_class = OrderForm
     model = Order
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        # Captures newly saved objects information for emails.
+        order_data = {'order_pk': self.object.pk,
+                      'order_number': self.object.order_number,
+                      'customer': self.object.customer,
+                      'product_name': self.object.product_name,
+                      'design_code': self.object.design_code,
+                      'order_reason': self.object.order_reason,
+                      'process_date': self.object.process_date,
+                      'ship_date': self.object.ship_date,
+                      'sequence_numbers': self.object.sequence_numbers,
+                      'tooling_status': self.object.tooling_status,
+                      'programming_status': self.object.programming_status,
+                      'order_notes': self.object.order_notes,
+                      'engineering_framing_setup': self.object.engineering_framing_setup,
+                      'engineering_panel_setup': self.object.engineering_panel_setup,
+                      'engineering_lipping_setup': self.object.engineering_lipping_setup,
+                      'engineering_assembly': self.object.engineering_assembly,
+                      'engineering_options': self.object.engineering_options,
+                      'engineering_other': self.object.engineering_other}
+        send_order_emails(order_data, "Update")
+        return super().form_valid(form)
 
 
 class ContactListView(ListView):
@@ -94,8 +120,11 @@ class ContactUpdateView(LoginRequiredMixin, UpdateView):
     model = Contact
 
 
-def send_order_emails(order_data):
-    email_subject = f"Special Order: {order_data['order_number']} is ready for release"
+def send_order_emails(order_data, process):
+    if process == "New":
+        email_subject = f"Special Order: {order_data['order_number']} is ready for release!"
+    else:
+        email_subject = f"Special Order: {order_data['order_number']} has been UPDATED!"
     html_message_bvs = render_to_string('bvs_email_template.html', order_data)
     html_message_bvt = render_to_string('bvt_email_template.html', order_data)
     plain_message_bvs = strip_tags(html_message_bvs)
