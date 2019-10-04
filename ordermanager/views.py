@@ -124,7 +124,7 @@ def send_order_emails(order_data, process):
     if process == "New":
         email_subject = f"Special Order: {order_data['order_number']} is ready for release!"
     else:
-        email_subject = f"Special Order: {order_data['order_number']} has been UPDATED!"
+        email_subject = f"Special Order UPDATE: {order_data['order_number']} has been UPDATED!"
     html_message_bvs = render_to_string('bvs_email_template.html', order_data)
     html_message_bvt = render_to_string('bvt_email_template.html', order_data)
     plain_message_bvs = strip_tags(html_message_bvs)
