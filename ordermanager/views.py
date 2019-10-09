@@ -99,7 +99,7 @@ class ContactListView(ListView):
     model = Contact
 
     def get_queryset(self):
-        return Contact.objects.filter(active=True).order_by('last_name', 'site')
+        return Contact.objects.filter(active=True).order_by('site', 'last_name')
 
 
 class ContactDetailView(DetailView):
