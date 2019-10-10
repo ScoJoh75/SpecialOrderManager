@@ -1,8 +1,8 @@
-Provisioning a new BVS Quality site
+Provisioning a new Special Order Manager site
 
 TL;DR
 
-fab deploy:host=URL-or-IP --set wsgi_app=bvs_quality * -poof- you are done
+fab deploy:host=URL-or-IP --set wsgi_app=specialorders * -poof- you are done
 
 System requirements
 Any of the following are known to work: Ubuntu 18.04LTS
