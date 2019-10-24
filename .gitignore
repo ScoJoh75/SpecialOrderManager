@@ -143,3 +143,4 @@ ordermanager/migrations/__pycache__/0004_auto_20190816_1127.cpython-37.pyc
 ordermanager/static/js/
 templates/
 
+/deploy_tools/
