@@ -5,7 +5,7 @@
     <title>Special Order</title>
 </head>
 <body>
-<div>Finish Mill,</div><br/>
+<div>Facility A,</div><br/>
 <div>The order# {{ order_number }} for {{ customer }} {{ product_name }} has been released for production.</div><br/>
 {% if order_reason == "Non-Existing Material Specification" or order_reason == "Customer Sample" or order_reason == "Special Assembly" or order_reason == "Special Packaging" or order_reason == "Profile Testing" or order_reason == "Process Testing" %}
 {% elif order_reason == "New Product" %}
@@ -71,14 +71,14 @@
         {% if order_reason == "Non-Existing Material Specification" or order_reason == "Customer Sample" or order_reason == "Special Assembly" or order_reason == "Special Packaging" or order_reason == "Profile Testing" or order_reason == "Process Testing" %}
             <div>Quality department, please include engineering concerns on new product/sample sign off sheets.</div><br/>
             <div>The special handling tag that will be attached to this paperwork can be seen here:
-            <a href="http://10.50.5.140/{% url 'handling_tag' order_pk %}">Special Handling tag!</a>
+            <a href="http://yoursite/{% url 'handling_tag' order_pk %}">Special Handling tag!</a>
             </div><br/>
         {% else %}
             <div>This order has no special handling tag</div>
         {% endif %}
     {% endif %}
     <p>Thank you!</p>
-    <p>- Aaron</p>
+    <p>- Contact</p>
 </div>
 </body>
 </html>

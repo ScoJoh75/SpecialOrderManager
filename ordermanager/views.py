@@ -122,22 +122,22 @@ class ContactUpdateView(LoginRequiredMixin, UpdateView):
 
 def send_order_emails(order_data, process):
     if process == "New":
-        email_subject = f"Special Order: {order_data['order_number']} is ready for release!"
+        email_subject = f"Special Order: {order_data['order_number']} is ready!"
     else:
         email_subject = f"Special Order UPDATE: {order_data['order_number']} has been UPDATED!"
-    html_message_bvs = render_to_string('bvs_email_template.html', order_data)
-    html_message_bvt = render_to_string('bvt_email_template.html', order_data)
-    plain_message_bvs = strip_tags(html_message_bvs)
-    plain_message_bvt = strip_tags(html_message_bvt)
-    from_email = 'adiehl@conestogawood.com'
-    to_bvs = []
-    to_bvt = []
+    html_message_a = render_to_string('email_template_a.html', order_data)
+    html_message_b = render_to_string('email_template_b.html', order_data)
+    plain_message_a = strip_tags(html_message_a)
+    plain_message_b = strip_tags(html_message_b)
+    from_email = 'sender@yourdomain.com'
+    to_a = []
+    to_b = []
     contacts = Contact.objects.filter(active=True)
     for contact in contacts:
-        if contact.site == 'BVS':
-            to_bvs.append(contact.email_address)
+        if contact.site == 'Facility A':
+            to_a.append(contact.email_address)
         else:
-            to_bvt.append(contact.email_address)
+            to_b.append(contact.email_address)
 
-    send_mail(email_subject, plain_message_bvt, from_email, to_bvt, html_message=html_message_bvt)
-    send_mail(email_subject, plain_message_bvs, from_email, to_bvs, html_message=html_message_bvs)
+    send_mail(email_subject, plain_message_b, from_email, to_b, html_message=html_message_b)
+    send_mail(email_subject, plain_message_a, from_email, to_a, html_message=html_message_a)

@@ -5,12 +5,12 @@
     <title>Special Order</title>
 </head>
 <body>
-<div>Dimension Mill,</div><br/>
-<div>The order# {{ order_number }} for {{ customer }} {{ product_name }} is ready for release.</div><br/>
+<div>Facility B,</div><br/>
+<div>The order# {{ order_number }} for {{ customer }} {{ product_name }} is ready.</div><br/>
 {% if order_reason == "Non-Existing Material Specification" or order_reason == "Customer Sample" or order_reason == "Special Assembly" or order_reason == "Special Packaging" or order_reason == "Profile Testing" or order_reason == "Process Testing" %}
-    <div>This is a code 26 special order. Please print paperwork on bright green paper.</div><br/>
+    <div>This is a code Y special order. Please print paperwork on bright green paper.</div><br/>
     <div>Please click here:
-        <a href="127.0.0.1:8000/handlingtag/{{ order_pk }}">Special Handling tag!</a>
+        <a href="http://yoursite/{% url 'handling_tag' order_pk %}">Special Handling tag!</a>
         and print the special handling tag. Attach this tag to the front of the shop floor paperwork.
     </div><br/>
 {% elif order_reason == "New Product" %}
@@ -18,11 +18,11 @@
     <div>No special handling tag is required for this order.</div><br/>
     <div>The notes entered were: {{ order_notes }}</div><br/>
 {% else %}
-    <div>This is a code 25 special order. Please print paperwork on bright blue paper.</div><br/>
+    <div>This is a code X special order. Please print paperwork on bright blue paper.</div><br/>
     <div>No special handling tag is required for this order.</div><br/>
     <div>The notes entered were: {{ order_notes }}</div><br/>
 {% endif %}
     <p>Thank you!</p>
-    <p>- Aaron</p>
+    <p>- Contact</p>
 </body>
 </html>

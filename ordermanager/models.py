@@ -4,15 +4,11 @@ from django.urls import reverse
 
 class Order(models.Model):
     CUSTOMERS = (
-        ("American Woodmark Corporation", "American Woodmark Corporation"),
-        ("ACP", "ACP"),
-        ("Jim Bishop", "Jim Bishop"),
-        ("Fabritec", "Fabritec"),
-        ("Hanssem", "Hanssem"),
-        ("KabinArt", "KabinArt"),
-        ("Legacy", "Legacy"),
-        ("MasterBrand Cabinets, Inc", "MasterBrand Cabinets, Inc"),
-        ("Unicor", "Unicor"),
+        ("Customer A", "Customer A"),
+        ("Customer B", "Customer B"),
+        ("Customer C", "Customer C"),
+        ("Customer D", "Customer D"),
+        ("Customer E", "Customer E"),
     )
 
     CARRIER = (
@@ -42,18 +38,18 @@ class Order(models.Model):
         ("Unusual Profile", "Unusual Profile"),
         ("Unusual Material", "Unusual Material"),
         ("Obsolete Product", "Obsolete Product"),
-        ("Non-Existing Material Specification", "Non-Existing Material Specification"),  # Order 26
-        ("Customer Sample", "Customer Sample"),  # Order 26
-        ("Special Assembly", "Special Assembly"),  # Order 26
+        ("Non-Existing Material Specification", "Non-Existing Material Specification"),
+        ("Customer Sample", "Customer Sample"),
+        ("Special Assembly", "Special Assembly"),
         ("Special Inspection", "Special Inspection"),
-        ("Special Packaging", "Special Packaging"),  # Order 26
-        ("Profile Testing", "Profile Testing"),  # Order 26
-        ("Process Testing", "Process Testing"),  # Order 26
+        ("Special Packaging", "Special Packaging"),
+        ("Profile Testing", "Profile Testing"),
+        ("Process Testing", "Process Testing"),
     )
 
     TOOLING = (
-        ("On Floor", "On Floor"),
-        ("In Grinding Room", "In Grinding Room"),
+        ("In Place", "In Place"),
+        ("In Production", "In Production"),
         ("Other - See Notes", "Other - See Notes"),
     )
 
@@ -89,8 +85,8 @@ class Order(models.Model):
 
 class Contact(models.Model):
     SITES = (
-        ("BVS", "Beaver Springs"),
-        ("BVT", "Beavertown"),
+        ("FYA", "Facility A"),
+        ("FYB", "Facility B"),
     )
 
     first_name = models.CharField(max_length=50)
